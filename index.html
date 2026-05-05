@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PUERTO BANÚS | Luxury Experience</title>
     <style>
-        /* CSS INTEGRADO PARA EL ARCHIVO .TXT */
         :root {
             --gold: #d4af37;
             --gold-light: #f1e5ac;
@@ -25,7 +24,7 @@
             color: var(--white);
             font-family: 'Times New Roman', serif;
             overflow-x: hidden;
-            cursor: none; /* Ocultamos cursor real */
+            cursor: none;
         }
 
         /* CURSOR PERSONALIZADO */
@@ -49,7 +48,6 @@
             transition: fill 0.3s ease, transform 0.3s ease;
         }
 
-        /* Clase para cuando pasa sobre botones */
         .cursor-active svg {
             fill: var(--gold) !important;
             transform: scale(1.5);
@@ -94,19 +92,56 @@
             color: var(--gold);
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION CON VIDEO DE YOUTUBE */
         .hero {
             height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+        }
+
+        /* Contenedor para que el video ocupe todo el fondo */
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none; /* Para que el cursor custom funcione sobre el video */
+        }
+
+        /* Ajuste para que el iframe sea más grande que el contenedor y cubra todo (efecto cover) */
+        .video-background iframe {
+            width: 100vw;
+            height: 56.25vw; /* 16:9 ratio */
+            min-height: 100vh;
+            min-width: 177.77vh; /* 16:9 ratio */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Capa oscura sobre el video para que el texto se lea bien */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+        }
+
+        .hero-content {
             position: relative;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                        url('https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-            background-size: cover;
-            background-position: center;
+            z-index: 1;
         }
 
         .hero h1 {
@@ -141,7 +176,7 @@
             color: var(--black);
         }
 
-        /* SECCIÓN TIENDA / GALERÍA */
+        /* GALERÍA */
         .section-padding {
             padding: 100px 10%;
         }
@@ -171,7 +206,7 @@
             background-color: var(--dark-grey);
         }
 
-        .gallery-item img, .gallery-item video {
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -179,12 +214,11 @@
             filter: grayscale(100%);
         }
 
-        .gallery-item:hover img, .gallery-item:hover video {
+        .gallery-item:hover img {
             filter: grayscale(0%);
             transform: scale(1.05);
         }
 
-        /* FOOTER */
         footer {
             padding: 50px;
             text-align: center;
@@ -193,12 +227,10 @@
             letter-spacing: 2px;
             color: #555;
         }
-
     </style>
 </head>
 <body>
 
-    <!-- CURSOR PERSONALIZADO (SVG CAMISA) -->
     <div id="custom-cursor">
         <svg viewBox="0 0 24 24">
             <path d="M6,2L3,6V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V6L18,2H15L15,5L13,5L13,2H11L11,5L9,5L9,2H6M7,4H8V7H16V4H17L18.5,6H5.5L7,4M5,8H19V20H5V8Z" />
@@ -218,9 +250,17 @@
     </header>
 
     <section class="hero">
-        <h1>Cómpralo ya</h1>
-        <p>Y sé parte de Puerto Banús</p>
-        <a href="#" class="cta-button hover-target">Ver Colección</a>
+        <div class="video-background">
+            <!-- YouTube Embed con autoplay, mute, loop y controles ocultos -->
+            <iframe src="https://www.youtube.com/embed/DtcB7emysx8?autoplay=1&mute=1&loop=1&playlist=DtcB7emysx8&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Cómpralo ya</h1>
+            <p>Y sé parte de Puerto Banús</p>
+            <a href="#" class="cta-button hover-target">Ver Colección</a>
+        </div>
     </section>
 
     <section class="section-padding">
@@ -232,12 +272,10 @@
                 <img src="https://images.pexels.com/photos/1012555/pexels-photo-1012555.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Lujo">
             </div>
             <div class="gallery-item">
-                <video autoplay muted loop>
-                    <source src="https://player.vimeo.com/external/370251144.sd.mp4?s=f0227367664e7c7a10a1168482436d650117b966&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
-                </video>
+                <img src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Yate">
             </div>
             <div class="gallery-item">
-                <img src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Yate">
+                <img src="https://images.pexels.com/photos/2047397/pexels-photo-2047397.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Puerto">
             </div>
         </div>
     </section>
