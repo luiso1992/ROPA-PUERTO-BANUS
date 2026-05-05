@@ -1,153 +1,268 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SEDA BANUS — Alta Sericicultura de Lujo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUERTO BANÚS | Luxury Experience</title>
+    <style>
+        /* CSS INTEGRADO PARA EL ARCHIVO .TXT */
+        :root {
+            --gold: #d4af37;
+            --gold-light: #f1e5ac;
+            --black: #050505;
+            --dark-grey: #1a1a1a;
+            --white: #ffffff;
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-    :root {
-      --silk-white: #FAF8F3;
-      --bone: #F0EDE5;
-      --sky-soft: #C8DFF0;
-      --sky-mid: #A8C8E8;
-      --sky-deep: #7FAFD4;
-      --sky-accent: #5B96C2;
-      --gold: #C9A96E;
-      --gold-light: #E8D5A8;
-      --charcoal: #2C2C2C;
-      --shadow: rgba(91,150,194,0.15);
-    }
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Times New Roman', serif;
+            overflow-x: hidden;
+            cursor: none; /* Ocultamos cursor real */
+        }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+        /* CURSOR PERSONALIZADO */
+        #custom-cursor {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: var(--silk-white);
-      color: var(--charcoal);
-      overflow-x: hidden;
-      cursor: none;
-    }
+        #custom-cursor svg {
+            width: 100%;
+            height: 100%;
+            fill: white;
+            transition: fill 0.3s ease, transform 0.3s ease;
+        }
 
-    #cursor {
-      position: fixed;
-      width: 40px; height: 40px;
-      pointer-events: none; z-index: 99999;
-      transform: translate(-50%,-50%);
-    }
+        /* Clase para cuando pasa sobre botones */
+        .cursor-active svg {
+            fill: var(--gold) !important;
+            transform: scale(1.5);
+        }
 
-    #cursor-ring {
-      position: fixed;
-      width: 50px; height: 50px;
-      border-radius: 50%;
-      border: 1px solid rgba(91,150,194,0.4);
-      pointer-events: none;
-      z-index: 99998;
-      transform: translate(-50%,-50%);
-    }
+        /* HEADER & NAV */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 50px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
 
-    nav {
-      position: fixed; top: 0; width: 100%;
-      z-index: 1000;
-      padding: 0 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 80px;
-      background: rgba(250,248,243,0.92);
-      backdrop-filter: blur(20px);
-    }
+        .logo {
+            font-size: 24px;
+            letter-spacing: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
 
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      letter-spacing: 6px;
-      text-decoration: none;
-      color: var(--charcoal);
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
 
-    #home {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
 
-    #hero-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      overflow: hidden;
-    }
+        nav ul li a:hover {
+            color: var(--gold);
+        }
 
-    #hero-video iframe {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 120vw;
-      height: 120vh;
-      transform: translate(-50%, -50%);
-      border: 0;
-      pointer-events: none;
-    }
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                        url('https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+        }
 
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.15);
-      z-index: 1;
-    }
+        .hero h1 {
+            font-size: 80px;
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 900px;
-    }
+        .hero p {
+            font-size: 18px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 30px;
+        }
 
-    .hero-title {
-      font-size: 90px;
-      color: white;
-    }
-  </style>
+        .cta-button {
+            padding: 15px 40px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 14px;
+            transition: 0.4s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+
+        /* SECCIÓN TIENDA / GALERÍA */
+        .section-padding {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 35px;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            color: var(--gold);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 450px;
+            background-color: var(--dark-grey);
+        }
+
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s;
+            filter: grayscale(100%);
+        }
+
+        .gallery-item:hover img, .gallery-item:hover video {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 50px;
+            text-align: center;
+            border-top: 1px solid var(--dark-grey);
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #555;
+        }
+
+    </style>
 </head>
-
 <body>
 
-  <div id="cursor">✦</div>
-  <div id="cursor-ring"></div>
-
-  <nav>
-    <a class="nav-logo">SEDA BANUS</a>
-  </nav>
-
-  <section id="home">
-
-    <div id="hero-video">
-      <iframe
-        src="https://www.youtube.com/embed/DtcB7emysx8?autoplay=1&mute=1&loop=1&playlist=DtcB7emysx8&controls=0&modestbranding=1"
-        allow="autoplay; fullscreen"
-        allowfullscreen>
-      </iframe>
+    <!-- CURSOR PERSONALIZADO (SVG CAMISA) -->
+    <div id="custom-cursor">
+        <svg viewBox="0 0 24 24">
+            <path d="M6,2L3,6V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V6L18,2H15L15,5L13,5L13,2H11L11,5L9,5L9,2H6M7,4H8V7H16V4H17L18.5,6H5.5L7,4M5,8H19V20H5V8Z" />
+        </svg>
     </div>
 
-    <div class="hero-overlay"></div>
+    <header>
+        <div class="logo">BANÚS</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="hover-target">Inicio</a></li>
+                <li><a href="#" class="hover-target">Tienda</a></li>
+                <li><a href="#" class="hover-target">Galeria de fotos</a></li>
+                <li><a href="#" class="hover-target">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="hero-content">
-      <h1 class="hero-title">SEDA BANUS</h1>
-    </div>
+    <section class="hero">
+        <h1>Cómpralo ya</h1>
+        <p>Y sé parte de Puerto Banús</p>
+        <a href="#" class="cta-button hover-target">Ver Colección</a>
+    </section>
 
-  </section>
+    <section class="section-padding">
+        <div class="section-title">
+            <h2>Galería Premium</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/1012555/pexels-photo-1012555.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Lujo">
+            </div>
+            <div class="gallery-item">
+                <video autoplay muted loop>
+                    <source src="https://player.vimeo.com/external/370251144.sd.mp4?s=f0227367664e7c7a10a1168482436d650117b966&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
+                </video>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Yate">
+            </div>
+        </div>
+    </section>
 
+    <footer>
+        <p>EST. 1970 - PUERTO BANÚS MARBELLA - EL LUJO ES UN ESTÁNDAR</p>
+    </footer>
+
+    <script>
+        const cursor = document.getElementById('custom-cursor');
+        const targets = document.querySelectorAll('.hover-target');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        targets.forEach(target => {
+            target.addEventListener('mouseenter', () => {
+                cursor.classList.add('cursor-active');
+            });
+            target.addEventListener('mouseleave', () => {
+                cursor.classList.remove('cursor-active');
+            });
+        });
+    </script>
 </body>
 </html>
