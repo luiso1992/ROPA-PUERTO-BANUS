@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PUERTO BANÚS | Tienda Exclusiva</title>
+    <title>PUERTO BANÚS | Luxury Experience</title>
     <style>
         :root {
             --gold: #d4af37;
@@ -173,7 +173,7 @@
             color: var(--black);
         }
 
-        /* SECCIÓN TIENDA - CATEGORÍAS */
+        /* SECCIONES COMUNES */
         .section-padding {
             padding: 100px 10%;
         }
@@ -190,6 +190,68 @@
             color: var(--gold);
         }
 
+        /* GALERÍA INTEGRADA: ESTILO PUERTO BANÚS */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(2, 300px);
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--dark-grey);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.8s ease;
+            filter: grayscale(100%) brightness(0.6);
+        }
+
+        .gallery-item:hover img {
+            filter: grayscale(0%) brightness(1);
+            transform: scale(1.05);
+        }
+
+        .gallery-item .label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--white);
+            background: rgba(0,0,0,0.5);
+            padding: 5px 10px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover .label {
+            opacity: 1;
+        }
+
+        /* Layout de mosaico premium */
+        .gi-1 { grid-column: span 4; grid-row: span 2; }
+        .gi-2 { grid-column: span 8; grid-row: span 1; }
+        .gi-3 { grid-column: span 4; grid-row: span 1; }
+        .gi-4 { grid-column: span 4; grid-row: span 1; }
+
+        /* FOOTER */
+        footer {
+            padding: 50px;
+            text-align: center;
+            border-top: 1px solid var(--dark-grey);
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #555;
+        }
+        
+        /* TIENDA CATEGORIES (V6) */
         .shop-categories {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -198,7 +260,7 @@
 
         .category-card {
             position: relative;
-            height: 500px;
+            height: 400px;
             overflow: hidden;
             text-decoration: none;
             display: block;
@@ -222,36 +284,17 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 40px 20px;
+            padding: 30px 20px;
             background: linear-gradient(transparent, rgba(0,0,0,0.8));
             text-align: center;
         }
 
         .category-overlay h3 {
-            font-size: 24px;
+            font-size: 20px;
             letter-spacing: 5px;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             color: var(--white);
-        }
-
-        .category-overlay span {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold);
-            border-bottom: 1px solid var(--gold);
-            padding-bottom: 5px;
-        }
-
-        /* FOOTER */
-        footer {
-            padding: 50px;
-            text-align: center;
-            border-top: 1px solid var(--dark-grey);
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: #555;
         }
     </style>
 </head>
@@ -267,10 +310,10 @@
         <div class="logo">BANÚS</div>
         <nav>
             <ul>
-                <li><a href="#" class="hover-target">Inicio</a></li>
+                <li><a href="#inicio" class="hover-target">Inicio</a></li>
                 <li><a href="#tienda" class="hover-target">Tienda</a></li>
-                <li><a href="#" class="hover-target">Galeria</a></li>
-                <li><a href="#" class="hover-target">Contacto</a></li>
+                <li><a href="#galeria" class="hover-target">Galería</a></li>
+                <li><a href="#" class="hover-target">Blog</a></li>
             </ul>
         </nav>
     </header>
@@ -288,36 +331,59 @@
         </div>
     </section>
 
+    <!-- SECCIÓN GALERÍA - PUERTO BANÚS & BOUTIQUE -->
+    <section id="galeria" class="section-padding">
+        <div class="section-title">
+            <h2>Lifestyle & Boutique</h2>
+            <p style="font-size: 12px; letter-spacing: 3px; color: #888; margin-top: 10px;">Sumérgete en el corazón del lujo</p>
+        </div>
+        
+        <div class="gallery-container">
+            <!-- Foto de Puerto Banús (Yates/Vistas) -->
+            <div class="gallery-item gi-1">
+                <img src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Puerto Banús Yachts">
+                <div class="label">Puerto Banús - El Puerto</div>
+            </div>
+            <!-- Foto de la Tienda / Boutique Interior -->
+            <div class="gallery-item gi-2">
+                <img src="https://images.pexels.com/photos/1036857/pexels-photo-1036857.jpeg?auto=compress&cs=tinysrgb&w=1260" alt="Boutique Interior">
+                <div class="label">Nuestra Boutique - Puerto Banús</div>
+            </div>
+            <!-- Ambiente Lujo Calles -->
+            <div class="gallery-item gi-3">
+                <img src="https://images.pexels.com/photos/2047397/pexels-photo-2047397.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Marbella Streets">
+                <div class="label">Muelle de Ribera</div>
+            </div>
+            <!-- Detalle escaparate o moda en la calle -->
+            <div class="gallery-item gi-4">
+                <img src="https://images.pexels.com/photos/1126993/pexels-photo-1126993.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fashion Shop">
+                <div class="label">Premium Collection</div>
+            </div>
+        </div>
+    </section>
+
     <section id="tienda" class="section-padding">
         <div class="section-title">
             <h2>Colecciones Exclusivas</h2>
         </div>
         
         <div class="shop-categories">
-            <!-- CATEGORÍA MUJER -->
-            <a href="catalogo-mujer.html" class="category-card hover-target">
-                <img src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Moda Mujer">
+            <a href="#" class="category-card hover-target">
+                <img src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mujer">
                 <div class="category-overlay">
                     <h3>Mujer</h3>
-                    <span>Ver Catálogo</span>
                 </div>
             </a>
-
-            <!-- CATEGORÍA HOMBRE -->
-            <a href="catalogo-hombre.html" class="category-card hover-target">
-                <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Moda Hombre">
+            <a href="#" class="category-card hover-target">
+                <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Hombre">
                 <div class="category-overlay">
                     <h3>Hombre</h3>
-                    <span>Ver Catálogo</span>
                 </div>
             </a>
-
-            <!-- CATEGORÍA UNISEX / CONJUNTOS -->
-            <a href="catalogo-unisex.html" class="category-card hover-target">
-                <img src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Moda Unisex">
+            <a href="#" class="category-card hover-target">
+                <img src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Unisex">
                 <div class="category-overlay">
                     <h3>Unisex</h3>
-                    <span>Ver Catálogo</span>
                 </div>
             </a>
         </div>
@@ -329,7 +395,7 @@
 
     <script>
         const cursor = document.getElementById('custom-cursor');
-        const targets = document.querySelectorAll('.hover-target');
+        const targets = document.querySelectorAll('.hover-target, .gallery-item, .category-card');
 
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
