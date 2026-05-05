@@ -92,7 +92,7 @@
             color: var(--gold);
         }
 
-        /* HERO SECTION - SOLO VIDEO */
+        /* HERO SECTION - VIDEO BACKGROUND */
         .hero {
             height: 100vh;
             width: 100%;
@@ -103,7 +103,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background-color: #000; /* Fondo negro sólido mientras carga */
         }
 
         .video-background {
@@ -174,7 +173,7 @@
             color: var(--black);
         }
 
-        /* RESTO DE LA PÁGINA */
+        /* SECCIÓN CATÁLOGO / TIENDA */
         .section-padding {
             padding: 100px 10%;
         }
@@ -191,20 +190,33 @@
             color: var(--gold);
         }
 
-        .gallery-grid {
+        .catalog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
 
-        .gallery-item {
+        .catalog-item {
             position: relative;
-            overflow: hidden;
-            height: 450px;
             background-color: var(--dark-grey);
+            text-align: center;
+            padding-bottom: 20px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid transparent;
         }
 
-        .gallery-item img {
+        .catalog-item:hover {
+            border-color: var(--gold);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .catalog-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -212,9 +224,39 @@
             filter: grayscale(100%);
         }
 
-        .gallery-item:hover img {
+        .catalog-item:hover img {
             filter: grayscale(0%);
             transform: scale(1.05);
+        }
+
+        .catalog-info {
+            padding: 20px 10px;
+        }
+
+        .catalog-info h3 {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .shop-link {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: transparent;
+            border: 1px solid var(--white);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .shop-link:hover {
+            background-color: var(--gold);
+            border-color: var(--gold);
+            color: var(--black);
         }
 
         footer {
@@ -247,7 +289,7 @@
         </nav>
     </header>
 
-    <section class="hero">
+    <section id="inicio" class="hero">
         <div class="video-background">
             <iframe src="https://www.youtube.com/embed/DtcB7emysx8?autoplay=1&mute=1&loop=1&playlist=DtcB7emysx8&controls=0&showinfo=0&rel=0&modestbranding=1" 
                     frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -256,23 +298,54 @@
         <div class="hero-content">
             <h1>Cómpralo ya</h1>
             <p>Y sé parte de Puerto Banús</p>
-            <a href="#" class="cta-button hover-target">Ver Colección</a>
+            <a href="#tienda" class="cta-button hover-target">Ver Colección</a>
         </div>
     </section>
 
-    <section class="section-padding">
+    <section id="tienda" class="section-padding">
         <div class="section-title">
-            <h2>Galería Premium</h2>
+            <h2>Catálogo Exclusivo</h2>
         </div>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://images.pexels.com/photos/1012555/pexels-photo-1012555.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Lujo">
+        <div class="catalog-grid">
+            <!-- Producto 1 -->
+            <div class="catalog-item">
+                <div class="image-container">
+                    <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Ropa 1">
+                </div>
+                <div class="catalog-info">
+                    <h3>Colección Verano</h3>
+                    <a href="#" class="shop-link hover-target">Ver Detalles</a>
+                </div>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Yate">
+            <!-- Producto 2 -->
+            <div class="catalog-item">
+                <div class="image-container">
+                    <img src="https://images.pexels.com/photos/1126993/pexels-photo-1126993.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Ropa 2">
+                </div>
+                <div class="catalog-info">
+                    <h3>Alta Costura</h3>
+                    <a href="#" class="shop-link hover-target">Ver Detalles</a>
+                </div>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.pexels.com/photos/2047397/pexels-photo-2047397.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Puerto">
+            <!-- Producto 3 -->
+            <div class="catalog-item">
+                <div class="image-container">
+                    <img src="https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Ropa 3">
+                </div>
+                <div class="catalog-info">
+                    <h3>Accesorios Lujo</h3>
+                    <a href="#" class="shop-link hover-target">Ver Detalles</a>
+                </div>
+            </div>
+            <!-- Producto 4 -->
+            <div class="catalog-item">
+                <div class="image-container">
+                    <img src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Ropa 4">
+                </div>
+                <div class="catalog-info">
+                    <h3>Edición Limitada</h3>
+                    <a href="#" class="shop-link hover-target">Ver Detalles</a>
+                </div>
             </div>
         </div>
     </section>
