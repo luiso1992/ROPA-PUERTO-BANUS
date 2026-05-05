@@ -92,7 +92,7 @@
             color: var(--gold);
         }
 
-        /* HERO SECTION CON VIDEO DE YOUTUBE */
+        /* HERO SECTION - SOLO VIDEO */
         .hero {
             height: 100vh;
             width: 100%;
@@ -103,9 +103,9 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            background-color: #000; /* Fondo negro sólido mientras carga */
         }
 
-        /* Contenedor para que el video ocupe todo el fondo */
         .video-background {
             position: absolute;
             top: 0;
@@ -113,22 +113,20 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            pointer-events: none; /* Para que el cursor custom funcione sobre el video */
+            pointer-events: none;
         }
 
-        /* Ajuste para que el iframe sea más grande que el contenedor y cubra todo (efecto cover) */
         .video-background iframe {
             width: 100vw;
-            height: 56.25vw; /* 16:9 ratio */
+            height: 56.25vw;
             min-height: 100vh;
-            min-width: 177.77vh; /* 16:9 ratio */
+            min-width: 177.77vh;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
 
-        /* Capa oscura sobre el video para que el texto se lea bien */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -176,7 +174,7 @@
             color: var(--black);
         }
 
-        /* GALERÍA */
+        /* RESTO DE LA PÁGINA */
         .section-padding {
             padding: 100px 10%;
         }
@@ -251,7 +249,6 @@
 
     <section class="hero">
         <div class="video-background">
-            <!-- YouTube Embed con autoplay, mute, loop y controles ocultos -->
             <iframe src="https://www.youtube.com/embed/DtcB7emysx8?autoplay=1&mute=1&loop=1&playlist=DtcB7emysx8&controls=0&showinfo=0&rel=0&modestbranding=1" 
                     frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
